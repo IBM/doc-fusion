@@ -1,76 +1,198 @@
 # Data sourcing project
 
+[![Build](https://img.shields.io/badge/build-0.1.0-green.svg)](/)
 [![License](https://img.shields.io/badge/license-APACHE_2.0-blue.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/username/projectname.svg?branch=main)](https://travis-ci.org/username/projectname)
-[![Coverage Status](https://coveralls.io/repos/github/username/projectname/badge.svg?branch=main)](https://coveralls.io/github/username/projectname?branch=main)
 
-## **Overview**
-A brief description of the library, its purpose, and key features.
+## Overview
 
-## **Table of Contents**
+In the age of data-driven decision-making, efficiently extracting text from various documents is critical. Documents often come in diverse layouts such as PDFs, Word files, excel and scanned images, which make data extraction difficult. Traditional extraction methods, such as rule-based systems and basic machine learning models, struggle with the variability of document structures, leading to errors or incomplete information. The quality of data used in AI applications can significantly impact their effectiveness. Recognizing this, a framework was developed to streamline text extraction, minimizing the complexity of handling diverse document formats. This tool simplifies the process, ensuring clean, ready-to-use text for applications, much like a pasta cutter effortlessly prepares penne. The framework focuses on simplifying the text extraction process, making it more adaptable and efficient.
+
+## Table of Contents
+
 1. [Overview](#overview)
 2. [Features](#features)
 3. [Installation](#installation)
-4. [Usage](#usage)
+4. [Example Usage](#example-usage)
 5. [API Reference](#api-reference)
 6. [Contributing](#contributing)
 7. [License](#license)
 8. [Acknowledgments](#acknowledgments)
 
-## **Features**
-- **Feature 1:** Brief description of feature 1.
-- **Feature 2:** Brief description of feature 2.
-- **Feature 3:** Brief description of feature 3.
+## Features
 
-## **Installation**
+- Parse different data formats (pdf, docx, xlsx, csv).
+
+- Web crawling and parsing of HTML content from web pages.
+
+- Handle complexities in data such as multi columnar, and tabular data.
+
+- Leverage an Agentic approach, where the Agent would decide how each data format is handled.
+
+- Extract metadata from the file – filename, page no., in case of tables – table id, row id, column name.  
+
+- Provide a user-friendly configuration mechanism for chunking.
+
+## Installation
 
 ### Prerequisites
-*List any prerequisites, such as specific versions of software, dependencies, or libraries.*
+
+- Python version 3.11.9 or higher
 
 ### Installing via Package Manager
+
 ```bash
-pip install projectname
+pip install docfusion==0.1.0
 ```
 
-## **Usage**
-*Provide examples of how to use the library, including code snippets.*
+## Example Usage
 
-```python
-import projectname
+1. Import the library
 
-# Example usage
-result = projectname.do_something()
-print(result)
-```
+    ```python
+    import docfusion
+    ```
 
-## **API Reference**
-*Detailed documentation of the library's API. This can include descriptions of classes, methods, parameters, return types, and examples.*
+2. Configuration
 
-### Class: `ClassName`
-#### Method: `method_name()`
-- **Description:** Brief description of what the method does.
-- **Parameters:**
-  - `param1` (type): Description of parameter 1.
-  - `param2` (type): Description of parameter 2.
-- **Returns:** (type) Description of the return value.
+    - 2.1. Interactive configuration
 
-*Repeat the above structure for each class and method in the library.*
+        ```python
+        docfusion.configure()
+        ```
 
-## **Contributing**
+        This will invoke the LLM agent to configure the agent and data parameters.
+
+    - 2.2. Non-interactive configuration
+
+        ```python
+        docfusion.configure(
+          input_data={
+                    "agent_verbose": False,
+                    "model_id": "mistralai/mixtral-8x7b-instruct-v01",
+                    "wx_project_id": "****",
+                    "wx_api_key": "****",
+                    "wx_endpoint": "https://us-south.ml.cloud.ibm.com",
+                    "chunk": True,
+                    "chunk_table_rows": True,
+                    "chunk_table_row_size": 3,
+                    "chunk_table_row_overlap": 1,
+                    "chunk_table_output_format": "md",
+                    "chunk_text_size": 512,
+                    "chunk_text_overlap": 10
+                }
+        )
+        ```
+
+3. Data Sourcing
+
+    ```python
+      #Load structured data
+      docs = DocFusion.source(
+          input_data="Source this: docs/samplestructured1.xlsx"
+      )
+    ```
+
+    ```python
+      # Load unstructured data
+      docs = DocFusion.source(
+          input_data="Source this: docs/insurance.pdf"
+        )
+    ```
+
+    ```python
+      # Load website data
+      docs = DocFusion.source(
+          input_data="Source this: https://www.sentinelone.com/anthology/8base/"
+      )
+
+    ```
+
+## API Reference
+
+### Class: `DocFusion`
+
+#### Method: `source()`
+
+- Description: This method is used to source data from various sources such as structured data files, unstructured data files, and web pages.
+- Parameters:
+  - `input_data` (str): The input data to be sourced. This can be a file path, a URL, or a string.
+- Returns: A list of documents.
+
+### Class: `src/core/agent.py`
+
+#### Method: `Agent`
+
+- Description: This class is used to create an agent for data sourcing.
+- Parameters:
+  - `model_id` (str): The ID of the model to be used for the agent.
+  - `wx_project_id` (str): The project ID of the WatsonX.ai project.
+  - `wx_api_key` (str): The API key for the WatsonX.ai project.
+
+### Class `src/core/output_parser.py`
+
+#### Method: `OutputParser`
+
+- Description: This class is used to parse the output from the agent.
+- Parameters:
+  - `output` (str): The output from the agent.
+- Returns: A list of documents.
+
+### Class `src/core/structured_data_loader.py`
+
+#### Method: `StructuredDataLoader`
+
+- Description: This class is used to load structured data from a file.
+- Parameters:
+  - `file_path` (str): The path to the file to be loaded.
+- Returns: A list of documents.
+
+### Class `src/core/unstructured_data_loader.py`
+
+#### Method: `UnstructuredDataLoader`
+
+- Description: This class is used to load unstructured data from a file.
+- Parameters:
+  - `file_path` (str): The path to the file to be loaded.
+- Returns: A list of documents.
+
+### Class `src/core/web_crawler_loader.py`
+
+#### Method: `WebCrawlerLoader`
+
+- Description: This class is used to load web page data from a URL.
+- Parameters:
+  - `url` (str): The URL of the web page to be loaded.
+- Returns: A list of documents.
+
+### Class `src/core/splitter.py`
+
+#### Method: `Splitter`
+
+- Description: This class is used to split the data into chunks.
+- Parameters:
+  - `documents` (list): The list of documents to be split into chunks.
+- Returns: A list of chunks.
+
+## Contributing
+
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to get started.
 
 ### Reporting Issues
-If you encounter any issues or have feature requests, please report them using [GitHub Issues](https://github.com/username/projectname/issues).
+
+If you encounter any issues or have feature requests, please report them using [GitHub Issues](https://github.com/IBM/doc-fusion/issues).
 
 ### Code of Conduct
-Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [email@example.com](mailto:email@example.com).
 
-## **License**
+Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [manoj.jahgirdar@ibm.com](mailto:manoj.jahgirdar@ibm.com).
+
+## License
+
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## **Acknowledgments**
+## Acknowledgments
+
 We would like to thank the following resources and contributors:
-- [Third-Party Library Name](https://example.com) - Brief description of its use.
-- Contributors - A list of notable contributors or a link to the GitHub contributors page.
 
-
+- [watsonx.ai](https://www.ibm.com/products/watsonx-ai) - IBM's platform for building AI applications.
+- [LangChain](https://python.langchain.com/v0.1/docs/getting_started/introduction/) - A framework for building language model applications.
+- [Contributors](https://github.com/IBM/doc-fusion/graphs/contributors) - A list of notable contributors or a link to the GitHub contributors page.

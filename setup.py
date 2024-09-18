@@ -14,7 +14,7 @@ setup(
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache 2.0 License",  # Replace with your license
+        "License :: OSI Approved :: Apache Software License",  # Replace with your license
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.9',
