@@ -5,7 +5,7 @@
 
 ## Overview
 
-In the age of data-driven decision-making, efficiently extracting text from various documents is critical. Documents often come in diverse layouts such as PDFs, Word files, excel and scanned images, which make data extraction difficult. Traditional extraction methods, such as rule-based systems and basic machine learning models, struggle with the variability of document structures, leading to errors or incomplete information. The quality of data used in AI applications can significantly impact their effectiveness. Recognizing this, a framework was developed to streamline text extraction, minimizing the complexity of handling diverse document formats. This tool simplifies the process, ensuring clean, ready-to-use text for applications, much like a pasta cutter effortlessly prepares penne. The framework focuses on simplifying the text extraction process, making it more adaptable and efficient.
+In an era where data drives decisions and innovation, efficiently extracting meaningful information from vast amounts of text is more crucial than ever. The quality of data utilised in your AI applications can make a significant difference in the value it provides, hence the first step towards building apowerful AI application is an efficient strategy for handling the data utilised.While the data processing stage involves two major processes - data extraction and data curation, the framework we built primarily focuses on the former stage.
 
 ## Table of Contents
 
