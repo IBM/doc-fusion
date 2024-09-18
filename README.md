@@ -196,3 +196,14 @@ We would like to thank the following resources and contributors:
 - [watsonx.ai](https://www.ibm.com/products/watsonx-ai) - IBM's platform for building AI applications.
 - [LangChain](https://python.langchain.com/v0.1/docs/getting_started/introduction/) - A framework for building language model applications.
 - [Contributors](https://github.com/IBM/doc-fusion/graphs/contributors) - A list of notable contributors or a link to the GitHub contributors page.
+
+## Contributors
+
+We would like to thank the following individuals for their contributions to this project:
+
+- [Ravi Kumar Srirangam](https://www.linkedin.com/in/ravisrirangam) - Solutions Architect, IBM
+- [Manoj Jahgirdar](https://www.linkedin.com/in/manojjahgirdar) - Software Engineer, IBM
+- [Surya Deep Singh](https://www.linkedin.com/in/surya-deep-singh-b9b94813a) - Software Engineer, IBM
+- [Aishwarya Pradeep](https://www.linkedin.com/in/aishwarya-pradeep108) - Software Engineer, IBM
+- [Suman P](https://www.linkedin.com/in/suman-p-756266202) - Software Engineer, IBM
+
