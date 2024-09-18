@@ -1,4 +1,4 @@
-# Data sourcing project
+# Doc Fusion - A data sourcing framework powered by watsonx.ai
 
 [![Build](https://img.shields.io/badge/build-0.1.0-green.svg)](/)
 [![License](https://img.shields.io/badge/license-APACHE_2.0-blue.svg)](LICENSE)
