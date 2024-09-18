@@ -86,24 +86,24 @@ pip install docfusion==0.1.0
 3. Data Sourcing
 
     ```python
-      #Load structured data
-      docs = DocFusion.source(
-          input_data="Source this: docs/samplestructured1.xlsx"
-      )
+    # Load structured data
+    docs = DocFusion.source(
+        input_data="Source this: docs/samplestructured1.xlsx"
+    )
     ```
 
     ```python
-      # Load unstructured data
-      docs = DocFusion.source(
-          input_data="Source this: docs/insurance.pdf"
+    # Load unstructured data
+    docs = DocFusion.source(
+        input_data="Source this: docs/insurance.pdf"
         )
     ```
 
     ```python
-      # Load website data
-      docs = DocFusion.source(
-          input_data="Source this: https://www.sentinelone.com/anthology/8base/"
-      )
+    # Load website data
+    docs = docfusion.source(
+        input_data="Source this: https://www.sentinelone.com/anthology/8base/"
+    )
 
     ```
 
