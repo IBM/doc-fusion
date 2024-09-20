@@ -57,7 +57,7 @@ pip install docfusion==0.1.0
     - 2.1. Interactive configuration
 
         ```python
-        docfusion.configure()
+        DocFusion.configure()
         ```
 
         This will invoke the LLM agent to configure the agent and data parameters.
@@ -65,7 +65,7 @@ pip install docfusion==0.1.0
     - 2.2. Non-interactive configuration
 
         ```python
-        docfusion.configure(
+        DocFusion.configure(
           input_data={
                     "agent_verbose": False,
                     "model_id": "mistralai/mixtral-8x7b-instruct-v01",
@@ -187,7 +187,7 @@ Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
