@@ -183,7 +183,7 @@ If you encounter any issues or have feature requests, please report them using [
 
 ### Code of Conduct
 
-Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [manoj.jahgirdar@ibm.com](mailto:manoj.jahgirdar@ibm.com).
+Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## License
 
